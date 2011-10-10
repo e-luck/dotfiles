@@ -1,0 +1,74 @@
+[user]
+	name = e-luck
+	email = eiji.fukushima@gmail.com
+[color]
+	# 自動的にカラーリング
+	ui = auto
+	diff = auto
+	grep = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[core]
+	excludesfile = ~/.gitignore
+	# 改行コードの自動変換
+	# http://progit.org/book/ja/ch7-1.html#coreautocrlf
+#		autocrlf = input  # コミット時のCRLFからLFへ変換のみ。
+	editor = mvim
+[push]
+#	default = tracking
+
+[alias]
+	co = checkout
+	st = status
+	sh = show
+	ci = commit
+# ci = commit -a  # 更新ファイル全て
+	cam = commit -a --amend  # 直前のcommitを修正
+	ft = fetch
+#	up = pull --rebase
+#	rbm = rebase master
+
+	# git-svn
+	sd = svn dcommit
+	sr = svn rebase
+
+	# branch
+	br = branch
+	ba = branch -a           # originも含めた全てのbranchを表示
+	bm = branch --merged     # merge済みのbranchを表示
+	bn = branch --no-merged  # mergeしてないbranchを表示
+
+	# log
+	ls = log --stat  # logに変更されたファイルも一緒に出す
+# wc = whatchanged  # logに変更されたファイルも一緒に出す
+	lp = log -p  # diffも一緒に出す
+#	la = log --pretty=\"format:%ad %h (%an): %s\" --date=short  # ざっくりログ出す
+#	lr = log origin  # originのlog
+#	oneline = log --pretty=oneline
+#	ranking = shortlog -s -n --no-merges
+	# logをtree表示
+	log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+	graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%cn] %Cgreen%d%Creset %s\" --all --date=short
+
+	# diff
+	dm = diff master           # masterとのdiff
+	dw = diff --color-words    # 単語単位でいろつけてdiff
+	dc = diff --cached         # addされているものとのdiff
+	ds = diff --staged         # 同上(1.6.1移行)
+	d1 = diff HEAD~            # HEADから1つ前とdiff
+	d2 = diff HEAD~~           # HEADから2つ前とdiff
+	d3 = diff HEAD~~~          # HEADから3つ前とdiff
+	d4 = diff HEAD~~~~         # HEADから4つ前とdiff
+	d5 = diff HEAD~~~~~        # HEADから5つ前とdiff
+	d10 = diff HEAD~~~~~~~~~~  # HEADから10前とdiff
+	# mergeの際にconflictが起きたファイルを編集
+	edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+	# mergeの際にconflictが起きたファイルをadd
+	add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
+	# grep
+	gr = grep
+	gn = grep -n
+
