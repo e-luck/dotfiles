@@ -425,8 +425,8 @@ nnoremap <Space>nn :NeoComplCacheEditSnippets
 "endfunction
 
 " vimrc,gvimrc表示
-noremap <Leader>v  :tabnew $MYVIMRC<CR>
-noremap <Leader>g  :tabnew $MYGVIMRC<CR>
+noremap <Leader>v  :tabnew $HOME/dotfiles/.vimrc<CR>
+noremap <Leader>g  :tabnew $HOME/dotfiles/.gvimrc<CR>
 
 " vimrcを再読み込み
 noremap <Leader><Leader>  :w<CR> :source $MYVIMRC<CR>
