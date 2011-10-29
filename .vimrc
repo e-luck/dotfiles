@@ -1,8 +1,31 @@
-"vi互換を無効に
+"neobundle.vimでプラグイン管理する
 set nocompatible
+filetype off
 
-"ファイルタイプをオン
-filetype plugin indent on
+if has('vim_starting')
+  set runtimepath+=~/.vim/neobundle.vim.git
+
+  call neobundle#rc(expand('~/.bundle'))
+endif
+
+NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
+NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/vim-scripts/FuzzyFinder'
+NeoBundle 'git://github.com/vim-scripts/L9'
+NeoBundle 'git://github.com/vim-scripts/The-NERD-tree'
+NeoBundle 'git://github.com/vim-scripts/matchit.zip'
+NeoBundle 'git://github.com/tpope/vim-surround'
+NeoBundle 'git://github.com/sjl/gundo.vim'
+NeoBundle 'git://github.com/othree/html5.vim'
+NeoBundle 'git://github.com/chrismetcalf/vim-yankring'
+NeoBundle 'git://github.com/vim-scripts/vcscommand.vim'
+NeoBundle 'git://github.com/scrooloose/nerdcommenter'
+NeoBundle 'git://github.com/Lokaltog/vim-easymotion'
+
+filetype plugin on
+filetype indent on
+"neobundle.vim用の指定ここまで
 
 "ツールバーを非表示に
 set guioptions-=T
@@ -175,6 +198,10 @@ let NERDShutUp = 1
 " NERD_commenter insert comments
 " let NERDComInsertMap='<c-c>'
 imap <C-c> <Plug>NERDCommenterInInsert
+" NERD_commenter コメントアウト
+nnoremap <Space>cc <Leader>cc
+" NERD_commenter コメントトグル
+nnoremap <Space>c<Space> <Leader>c<Space>
 
 "matchit.vimで%を拡張
 "対応するタグに移動できるようにする
@@ -204,9 +231,6 @@ let g:fuf_enumeratingLimit = 20
 "gundo.vim
 "アンドゥツリー
 nmap U :<C-u>GundoToggle<CR>
-
-"JavaScript辞書
-set dictionary=$HOME/vimfiles/dict/javascript.dict
 
 "HTML文字実体参照の変換を行うスクリプトstr2htmlentity.vim用
 vmap <silent> sx :Str2HtmlEntity<cr>
@@ -462,9 +486,6 @@ endfunction
 nnoremap <Space>jf :<C-u>JunkFile<CR>
 nnoremap <Space>jt :<C-u>JunkFileTxt<CR>
 
-" pathogen.vimをアクティブに
-call pathogen#runtime_append_all_bundles()
-
 " Select CSS Rule Set  "{{{1
 " カーソルから最も近いCSSルールを選択する
 command! -nargs=0 SelectCssRuleSet call s:select_css_rule_set()
@@ -514,7 +535,4 @@ nnoremap <silent> <Space>vir  $vi{zf
 
 "Gundo.vim
 nnoremap <F5> :GundoToggle<CR>
-
-"EasyMotion.vim
-nnoremap <Space><Space> <Leader>
 
