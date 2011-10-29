@@ -22,6 +22,7 @@ NeoBundle 'git://github.com/chrismetcalf/vim-yankring'
 NeoBundle 'git://github.com/vim-scripts/vcscommand.vim'
 NeoBundle 'git://github.com/scrooloose/nerdcommenter'
 NeoBundle 'git://github.com/Lokaltog/vim-easymotion'
+NeoBundle 'git://github.com/vim-scripts/Gist.vim'
 
 filetype plugin on
 filetype indent on
