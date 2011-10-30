@@ -540,3 +540,14 @@ nnoremap <F5> :GundoToggle<CR>
 
 "Fugitive.vim ステータスラインにブランチ名とリビジョンを表示
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+"MacVimで保存したUTF-8な書類がMacのQuickLookで見れない問題を解決する
+"http://d.hatena.ne.jp/uasi/20110523/1306079612
+au BufWritePost * call SetUTF8Xattr(expand("<afile>"))
+
+function! SetUTF8Xattr(file)
+	let isutf8 = &fileencoding == "utf-8" || ( &fileencoding == "" && &encoding == "utf-8")
+	if has("unix") && match(system("uname"),'Darwin') != -1 && isutf8
+		call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
+	endif
+endfunction
