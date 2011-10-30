@@ -23,6 +23,7 @@ NeoBundle 'git://github.com/vim-scripts/vcscommand.vim'
 NeoBundle 'git://github.com/scrooloose/nerdcommenter'
 NeoBundle 'git://github.com/Lokaltog/vim-easymotion'
 NeoBundle 'git://github.com/vim-scripts/Gist.vim'
+NeoBundle 'git://github.com/tpope/vim-fugitive'
 
 filetype plugin on
 filetype indent on
@@ -537,3 +538,5 @@ nnoremap <silent> <Space>vir  $vi{zf
 "Gundo.vim
 nnoremap <F5> :GundoToggle<CR>
 
+"Fugitive.vim ステータスラインにブランチ名とリビジョンを表示
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
