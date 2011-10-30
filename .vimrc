@@ -230,6 +230,10 @@ let g:fuf_file_exclude = '\v\.(swp|thumb|DS_Store)$|\.svn|\.git|\.(gif|jpg|png)$
 let g:fuf_mrufile_maxItem = 10000
 let g:fuf_enumeratingLimit = 20
 
+"Unite.vimの設定
+nnoremap <unique> <silent> <space>uu :Unite buffer file file_mru<CR>
+nnoremap <unique> <silent> <space>uf :Unite -buffer-name=file file<CR>
+
 "gundo.vim
 "アンドゥツリー
 nmap U :<C-u>GundoToggle<CR>
@@ -540,6 +544,10 @@ nnoremap <F5> :GundoToggle<CR>
 
 "Fugitive.vim ステータスラインにブランチ名とリビジョンを表示
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" github
+let g:github_user = 'e-luck'
+let g:github_token = 'd7fc39d81511c62432361265e68b53d1'
 
 "MacVimで保存したUTF-8な書類がMacのQuickLookで見れない問題を解決する
 "http://d.hatena.ne.jp/uasi/20110523/1306079612
