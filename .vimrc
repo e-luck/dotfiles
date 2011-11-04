@@ -159,14 +159,6 @@ nmap <unique> <silent> <space>bb :ls<CR>:buf
 map <kPlus> <C-W>+
 map <kMinus> <C-W>-
 
-"NERDtreeのトグルをキーマップ
-nnoremap <f12> :NERDTreeToggle<CR>
-
-"YankRingの履歴ウィンドウを表示するキーマップ
-nnoremap <silent> <F7> :YRShow<CR>
-:let g:yankring_max_history = 10
-:let g:yankring_window_height =13
-
 "Yで行末までヤンク
 nnoremap Y y$
 
@@ -179,74 +171,10 @@ vmap <Leader>c  g<C-g>
 " タグを選択して折りたたみ
 nnoremap <Space>zf  vatzf
 
-" @:EnhCommentify.vim
-"EnhancedCommentiyで、ブロック単位でコメントアウト
-let g:EnhCommentifyMultiPartBlocks = 'yes' 
-"コメントアウト
-nnoremap <Space>x <Leader>x
-
-" @:endtagcommentcustomize.vim
-nnoremap ,t :<C-u>call Endtagcomment()<CR>
-" HTML:既存のコメント削除した後でコメント追加。
-au FileType html nnoremap <Space>,t  0f<df> :<C-u>call Endtagcomment()<CR>
-au FileType xhtml nnoremap <Space>,t  0f<df> :<C-u>call Endtagcomment()<CR>
-
-" NERD_commenter コメント記号の間に半角スペースを挿入します。
-let NERDSpaceDelims = 1
-
-" NERD_commenter 未対応のファイルがあった場合の警告を表示しません。
-let NERDShutUp = 1
-
-" NERD_commenter insert comments
-" let NERDComInsertMap='<c-c>'
-imap <C-c> <Plug>NERDCommenterInInsert
-" NERD_commenter コメントアウト
-nnoremap <Space>cc <Leader>cc
-" NERD_commenter コメントトグル
-nnoremap <Space>c<Space> <Leader>c<Space>
-
-"matchit.vimで%を拡張
-"対応するタグに移動できるようにする
-:let b:match_words = '<:>,<tag>:</tag>'
-
-"fuzzyfinder.vimの設定
-"http://subtech.g.hatena.ne.jp/secondlife/20091203/1259817893
-"http://tech.kayac.com/archive/vim-3-plugin.html
-"nnoremap <unique> <silent> <C-S> :FufBuffer!<CR>
-"nnoremap <unique> <silent> ef :FufFile!<CR>
-"nnoremap <silent> eff :FufFile!<CR>
-"nnoremap <silent> efm :FufMruFile!<CR>
-nnoremap <unique> <silent> <space>fb :FufBuffer!<CR>
-nnoremap <unique> <silent> <space>ff :FufFile!<CR>
-nnoremap <unique> <silent> <space>fd :FufDir!<CR>
-nnoremap <unique> <silent> <space>fm :FufMruFile!<CR>
-nnoremap <unique> <silent> <Space>fc :FufRenewCache<CR>
-autocmd FileType fuf nmap <C-c> <ESC>
-let g:fuf_splitPathMatching = ' '
-let g:fuf_patternSeparator = ' '
-let g:fuf_modesDisable = ['mrucmd']
-let g:fuf_mrufile_exclude = '\v\~$|\.bak$|\.swp|\.howm$'
-let g:fuf_file_exclude = '\v\.(swp|thumb|DS_Store)$|\.svn|\.git|\.(gif|jpg|png)$'
-let g:fuf_mrufile_maxItem = 10000
-let g:fuf_enumeratingLimit = 20
-
-"Unite.vimの設定
-nnoremap <unique> <silent> <space>uu :Unite buffer file file_mru<CR>
-nnoremap <unique> <silent> <space>uf :Unite -buffer-name=file file<CR>
-
-"gundo.vim
-"アンドゥツリー
-nmap U :<C-u>GundoToggle<CR>
-
-"HTML文字実体参照の変換を行うスクリプトstr2htmlentity.vim用
-vmap <silent> sx :Str2HtmlEntity<cr>
-vmap <silent> sr :Entity2HtmlString<cr>
-
 "/{pattern}の入力中は「/」をタイプすると自動で「\/」が、 
 "?{pattern}の入力中は「?」をタイプすると自動で「\?」が 入力される
 cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ?  getcmdtype() == '?' ? '\?' : '?'
-
 
 " HTMLとかでドキュメントルートからの絶対パスのファイルを開く（gfみたいな感じで）
 " 絶対パスじゃなかったら(/で始まってなかったら）gfと同じ
@@ -301,7 +229,6 @@ endfunction
 
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
-
 
 " 文字コードの自動認識
 if &encoding !=# 'utf-8'
@@ -365,6 +292,182 @@ augroup SkeletonAu
 	autocmd!
 	autocmd BufNewFile *.html 0r $HOME/.vim/templates/skel.html
 augroup END
+
+
+" vimrc,gvimrc表示
+noremap <Leader>v  :tabnew $HOME/dotfiles/.vimrc<CR>
+noremap <Leader>g  :tabnew $HOME/dotfiles/.gvimrc<CR>
+
+" vimrcを再読み込み
+noremap <Leader><Leader>  :w<CR> :source $MYVIMRC<CR>
+" vimrcとgvimrcを再読み込み
+noremap <Leader>^  :source $MYVIMRC<CR> :source $MYGVIMRC<CR>
+
+" Open junk file
+command! -nargs=0 JunkFile call s:open_junk_file()
+command! -nargs=0 JunkFileTxt call s:open_junk_file('txt')
+
+function! s:open_junk_file(ext)
+  " 保存先
+  let l:junk_dir = $HOME . '/_vim_junk'. strftime('/%Y/%m')
+  " 保存先をdrobbox内に変更する場合
+  "" Mac
+  "let l:junk_dir = $HOME . '/Dropbox/Public/_vim_junk'. strftime('/%Y/%m')
+  "" Win
+  "let l:junk_dir = $HOME . '/My Dropbox/Public/_vim_junk'. strftime('/%Y/%m')
+
+  let l:junk_ext = a:ext
+  if !isdirectory(l:junk_dir)
+    call mkdir(l:junk_dir, 'p')
+  endif
+
+  let l:filename = input('Junk Code: ', l:junk_dir.strftime('/%Y-%m-%d-%H%M%S.').junk_ext)
+  if l:filename != ''
+    execute 'edit ' . l:filename
+  endif
+endfunction
+
+
+" 使い捨てメモ保存
+nnoremap <Space>jf :<C-u>JunkFile<CR>
+nnoremap <Space>jt :<C-u>JunkFileTxt<CR>
+
+" Select CSS Rule Set  "{{{1
+" カーソルから最も近いCSSルールを選択する
+command! -nargs=0 SelectCssRuleSet call s:select_css_rule_set()
+function! s:select_css_rule_set()
+    let save_reg = @@
+
+    silent normal $va{Voy
+    let first_yank = @@
+
+    " 最初にヤンクした内容に'{'が含まれるかどうかチェック
+    let chk_first_yank = matchstr(first_yank, '{')
+    if chk_first_yank == ''
+        " 最初にヤンクした内容に'{'が含まれない場合は次の行をチェックする
+        let chk_next_line = matchstr(getline(line(".")+1), '{')
+        while chk_next_line == '' " 次の行に'{'がない場合は見つかるまで繰り返す
+            silent normal j
+            " ファイルの最終行に来たらループ抜けてエラーメッセージを表示する
+            if line(".")==line("$")
+                execute "normal \<Esc>"
+                echohl ErrorMsg
+                echo 'no match css rule sets.'
+                echohl None
+                return
+                break
+            endif
+            let chk_next_line = matchstr(getline(line(".")+1), '{')
+        endwhile
+        silent normal j
+    endif
+
+    execute "normal \<Esc>"
+    silent normal $va{Vo
+    let chk_prev_line = matchstr(getline(line(".")-1), ',')
+    while chk_prev_line != '' " 上の行に','があればセレクタグループとして選択する
+        silent normal k
+        let chk_prev_line = matchstr(getline(line(".")-1), ',')
+    endwhile
+
+    let @@ = save_reg
+endfunction
+
+nnoremap <silent> var  :<C-u>SelectCssRuleSet<CR>
+nnoremap <silent> <Space>var  :<C-u>SelectCssRuleSet<CR>zf
+nnoremap <silent> vir  $vi{
+nnoremap <silent> <Space>vir  $vi{zf
+"}}}
+
+"MacVimで保存したUTF-8な書類がMacのQuickLookで見れない問題を解決する
+"http://d.hatena.ne.jp/uasi/20110523/1306079612
+au BufWritePost * call SetUTF8Xattr(expand("<afile>"))
+
+function! SetUTF8Xattr(file)
+	let isutf8 = &fileencoding == "utf-8" || ( &fileencoding == "" && &encoding == "utf-8")
+	if has("unix") && match(system("uname"),'Darwin') != -1 && isutf8
+		call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
+	endif
+endfunction
+
+"NERDtreeのトグルをキーマップ
+nnoremap <f12> :NERDTreeToggle<CR>
+
+"YankRingの履歴ウィンドウを表示するキーマップ
+nnoremap <silent> <F7> :YRShow<CR>
+:let g:yankring_max_history = 10
+:let g:yankring_window_height =13
+
+" @:EnhCommentify.vim
+"EnhancedCommentiyで、ブロック単位でコメントアウト
+let g:EnhCommentifyMultiPartBlocks = 'yes' 
+"コメントアウト
+nnoremap <Space>x <Leader>x
+
+" @:endtagcommentcustomize.vim
+nnoremap ,t :<C-u>call Endtagcomment()<CR>
+" HTML:既存のコメント削除した後でコメント追加。
+au FileType html nnoremap <Space>,t  0f<df> :<C-u>call Endtagcomment()<CR>
+au FileType xhtml nnoremap <Space>,t  0f<df> :<C-u>call Endtagcomment()<CR>
+
+" NERD_commenter コメント記号の間に半角スペースを挿入します。
+let NERDSpaceDelims = 1
+
+" NERD_commenter 未対応のファイルがあった場合の警告を表示しません。
+let NERDShutUp = 1
+
+" NERD_commenter insert comments
+" let NERDComInsertMap='<c-c>'
+imap <C-c> <Plug>NERDCommenterInInsert
+" NERD_commenter コメントアウト
+nnoremap <Space>cc <Leader>cc
+" NERD_commenter コメントトグル
+nnoremap <Space>c<Space> <Leader>c<Space>
+
+"matchit.vimで%を拡張
+"対応するタグに移動できるようにする
+:let b:match_words = '<:>,<tag>:</tag>'
+
+"fuzzyfinder.vimの設定
+"http://subtech.g.hatena.ne.jp/secondlife/20091203/1259817893
+"http://tech.kayac.com/archive/vim-3-plugin.html
+"nnoremap <unique> <silent> <C-S> :FufBuffer!<CR>
+"nnoremap <unique> <silent> ef :FufFile!<CR>
+"nnoremap <silent> eff :FufFile!<CR>
+"nnoremap <silent> efm :FufMruFile!<CR>
+nnoremap <unique> <silent> <space>fb :FufBuffer!<CR>
+nnoremap <unique> <silent> <space>ff :FufFile!<CR>
+nnoremap <unique> <silent> <space>fd :FufDir!<CR>
+nnoremap <unique> <silent> <space>fm :FufMruFile!<CR>
+nnoremap <unique> <silent> <Space>fc :FufRenewCache<CR>
+autocmd FileType fuf nmap <C-c> <ESC>
+let g:fuf_splitPathMatching = ' '
+let g:fuf_patternSeparator = ' '
+let g:fuf_modesDisable = ['mrucmd']
+let g:fuf_mrufile_exclude = '\v\~$|\.bak$|\.swp|\.howm$'
+let g:fuf_file_exclude = '\v\.(swp|thumb|DS_Store)$|\.svn|\.git|\.(gif|jpg|png)$'
+let g:fuf_mrufile_maxItem = 10000
+let g:fuf_enumeratingLimit = 20
+
+"Unite.vimの設定
+nnoremap <unique> <silent> <space>uu :Unite buffer file file_mru<CR>
+nnoremap <unique> <silent> <space>uf :Unite -buffer-name=file file<CR>
+
+"Gundo.vim
+"アンドゥツリー
+"nmap U :<C-u>GundoToggle<CR>
+nnoremap <F5> :GundoToggle<CR>
+
+"Fugitive.vim ステータスラインにブランチ名とリビジョンを表示
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" github(for gist.vim)
+let g:github_user = 'e-luck'
+let g:github_token = 'd7fc39d81511c62432361265e68b53d1'
+
+"HTML文字実体参照の変換を行うスクリプトstr2htmlentity.vim用
+vmap <silent> sx :Str2HtmlEntity<cr>
+vmap <silent> sr :Entity2HtmlString<cr>
 
 " neocomplcache.vim
 autocmd! FileType xhtml setlocal iskeyword+=:,+
@@ -454,108 +557,3 @@ nnoremap <Space>nn :NeoComplCacheEditSnippets
 "	endif
 "endfunction
 
-" vimrc,gvimrc表示
-noremap <Leader>v  :tabnew $HOME/dotfiles/.vimrc<CR>
-noremap <Leader>g  :tabnew $HOME/dotfiles/.gvimrc<CR>
-
-" vimrcを再読み込み
-noremap <Leader><Leader>  :w<CR> :source $MYVIMRC<CR>
-" vimrcとgvimrcを再読み込み
-noremap <Leader>^  :source $MYVIMRC<CR> :source $MYGVIMRC<CR>
-
-" Open junk file
-command! -nargs=0 JunkFile call s:open_junk_file()
-command! -nargs=0 JunkFileTxt call s:open_junk_file('txt')
-
-function! s:open_junk_file(ext)
-  " 保存先
-  let l:junk_dir = $HOME . '/_vim_junk'. strftime('/%Y/%m')
-  " 保存先をdrobbox内に変更する場合
-  "" Mac
-  "let l:junk_dir = $HOME . '/Dropbox/Public/_vim_junk'. strftime('/%Y/%m')
-  "" Win
-  "let l:junk_dir = $HOME . '/My Dropbox/Public/_vim_junk'. strftime('/%Y/%m')
-
-  let l:junk_ext = a:ext
-  if !isdirectory(l:junk_dir)
-    call mkdir(l:junk_dir, 'p')
-  endif
-
-  let l:filename = input('Junk Code: ', l:junk_dir.strftime('/%Y-%m-%d-%H%M%S.').junk_ext)
-  if l:filename != ''
-    execute 'edit ' . l:filename
-  endif
-endfunction
-
-
-" 使い捨てメモ保存
-nnoremap <Space>jf :<C-u>JunkFile<CR>
-nnoremap <Space>jt :<C-u>JunkFileTxt<CR>
-
-" Select CSS Rule Set  "{{{1
-" カーソルから最も近いCSSルールを選択する
-command! -nargs=0 SelectCssRuleSet call s:select_css_rule_set()
-function! s:select_css_rule_set()
-    let save_reg = @@
-
-    silent normal $va{Voy
-    let first_yank = @@
-
-    " 最初にヤンクした内容に'{'が含まれるかどうかチェック
-    let chk_first_yank = matchstr(first_yank, '{')
-    if chk_first_yank == ''
-        " 最初にヤンクした内容に'{'が含まれない場合は次の行をチェックする
-        let chk_next_line = matchstr(getline(line(".")+1), '{')
-        while chk_next_line == '' " 次の行に'{'がない場合は見つかるまで繰り返す
-            silent normal j
-            " ファイルの最終行に来たらループ抜けてエラーメッセージを表示する
-            if line(".")==line("$")
-                execute "normal \<Esc>"
-                echohl ErrorMsg
-                echo 'no match css rule sets.'
-                echohl None
-                return
-                break
-            endif
-            let chk_next_line = matchstr(getline(line(".")+1), '{')
-        endwhile
-        silent normal j
-    endif
-
-    execute "normal \<Esc>"
-    silent normal $va{Vo
-    let chk_prev_line = matchstr(getline(line(".")-1), ',')
-    while chk_prev_line != '' " 上の行に','があればセレクタグループとして選択する
-        silent normal k
-        let chk_prev_line = matchstr(getline(line(".")-1), ',')
-    endwhile
-
-    let @@ = save_reg
-endfunction
-
-nnoremap <silent> var  :<C-u>SelectCssRuleSet<CR>
-nnoremap <silent> <Space>var  :<C-u>SelectCssRuleSet<CR>zf
-nnoremap <silent> vir  $vi{
-nnoremap <silent> <Space>vir  $vi{zf
-"}}}
-
-"Gundo.vim
-nnoremap <F5> :GundoToggle<CR>
-
-"Fugitive.vim ステータスラインにブランチ名とリビジョンを表示
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
-" github
-let g:github_user = 'e-luck'
-let g:github_token = 'd7fc39d81511c62432361265e68b53d1'
-
-"MacVimで保存したUTF-8な書類がMacのQuickLookで見れない問題を解決する
-"http://d.hatena.ne.jp/uasi/20110523/1306079612
-au BufWritePost * call SetUTF8Xattr(expand("<afile>"))
-
-function! SetUTF8Xattr(file)
-	let isutf8 = &fileencoding == "utf-8" || ( &fileencoding == "" && &encoding == "utf-8")
-	if has("unix") && match(system("uname"),'Darwin') != -1 && isutf8
-		call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
-	endif
-endfunction
