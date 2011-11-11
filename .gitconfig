@@ -10,7 +10,7 @@
 	branch = auto
 	interactive = auto
 [core]
-	excludesfile = /Users/jp61071/.gitignore_global
+	excludesfile = ~/dotfiles/.gitignore_global
 	# 改行コードの自動変換
 	# http://progit.org/book/ja/ch7-1.html#coreautocrlf
 #		autocrlf = input  # コミット時のCRLFからLFへ変換のみ。
