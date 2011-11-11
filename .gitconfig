@@ -10,7 +10,7 @@
 	branch = auto
 	interactive = auto
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/jp61071/.gitignore_global
 	# 改行コードの自動変換
 	# http://progit.org/book/ja/ch7-1.html#coreautocrlf
 #		autocrlf = input  # コミット時のCRLFからLFへ変換のみ。
@@ -72,3 +72,9 @@
 	gr = grep
 	gn = grep -n
 
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

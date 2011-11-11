@@ -176,6 +176,9 @@ nnoremap <Space>zf  vatzf
 cnoremap <expr> /  getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ?  getcmdtype() == '?' ? '\?' : '?'
 
+" Lessのsyntaxハイライト
+au BufNewFile,BufRead *.less			setf less
+
 " HTMLとかでドキュメントルートからの絶対パスのファイルを開く（gfみたいな感じで）
 " 絶対パスじゃなかったら(/で始まってなかったら）gfと同じ
 " ドキュメントルートのディレクトリは配列で複数指定できる。
