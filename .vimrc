@@ -454,7 +454,7 @@ let g:fuf_mrufile_maxItem = 10000
 let g:fuf_enumeratingLimit = 20
 
 "Unite.vimの設定
-nnoremap <unique> <silent> <space>uu :Unite buffer file file_mru<CR>
+nnoremap <unique> <silent> <space>uu :Unite buffer file file_mru directory_mru<CR>
 nnoremap <unique> <silent> <space>uf :Unite -buffer-name=file file<CR>
 " ESCキーを2回押してUnite終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
