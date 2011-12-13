@@ -394,6 +394,10 @@ function! SetUTF8Xattr(file)
 	endif
 endfunction
 
+"surroun.vimのキーマップ
+nmap s   <Plug>Ysurround
+nmap ss  <Plug>Yssurround
+
 "NERDtreeのトグルをキーマップ
 nnoremap <f12> :NERDTreeToggle<CR>
 
