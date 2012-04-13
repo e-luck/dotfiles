@@ -51,6 +51,9 @@ set smartindent
 "長い行は折り返す
 set wrap
 
+" 拡張子がtxtの時に、入力中に自動的に改行されるのを防ぐ
+autocmd BufNewFile,BufRead *.txt setlocal textwidth=0
+
 "編集中のファイルを保存しなくても画面切り替えできるように
 set hid
 
