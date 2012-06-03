@@ -62,3 +62,15 @@ endif
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=grey80
 " %u3000は全角space(　)の文字code
 au BufNewFile,BufRead * match ZenkakuSpace /\%u3000/
+
+
+#vim-textmanip
+xmap <D-d> <Plug>(textmanip-duplicate-down)
+nmap <D-d> <Plug>(textmanip-duplicate-down)
+xmap <D-D> <Plug>(textmanip-duplicate-up)
+nmap <D-D> <Plug>(textmanip-duplicate-up)
+
+xmap <C-j> <Plug>(textmanip-move-down)
+xmap <C-k> <Plug>(textmanip-move-up)
+xmap <C-h> <Plug>(textmanip-move-left)
+xmap <C-l> <Plug>(textmanip-move-right)
