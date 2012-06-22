@@ -64,7 +64,7 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=grey80
 au BufNewFile,BufRead * match ZenkakuSpace /\%u3000/
 
 
-#vim-textmanip
+"vim-textmanip
 xmap <D-d> <Plug>(textmanip-duplicate-down)
 nmap <D-d> <Plug>(textmanip-duplicate-down)
 xmap <D-D> <Plug>(textmanip-duplicate-up)
