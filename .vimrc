@@ -165,6 +165,10 @@ nmap <unique> <silent> <space>bb :ls<CR>:buf
 map <kPlus> <C-W>+
 map <kMinus> <C-W>-
 
+"ペーストする内容を無名レジスタから0番レジスタに
+nnoremap p "0p
+nnoremap P "0P
+
 "Yで行末までヤンク
 nnoremap Y y$
 
