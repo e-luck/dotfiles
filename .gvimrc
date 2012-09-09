@@ -74,3 +74,15 @@ xmap <C-j> <Plug>(textmanip-move-down)
 xmap <C-k> <Plug>(textmanip-move-up)
 xmap <C-h> <Plug>(textmanip-move-left)
 xmap <C-l> <Plug>(textmanip-move-right)
+
+"powerlineのモードインジケーターを日本語に
+"http://mattn.kaoriya.net/software/vim/20120823214404.htm
+let g:Powerline_mode_i = '挿入'
+let g:Powerline_mode_R = '置換'
+let g:Powerline_mode_n = '通常'
+let g:Powerline_mode_v = 'ビジュアル'
+let g:Powerline_mode_V = '行ビジュアル'
+let g:Powerline_mode_cv = '矩形ビジュアル'
+let g:Powerline_mode_s = '選択'
+let g:Powerline_mode_S = '行選択'
+let g:Powerline_mode_cs = '矩形選択'

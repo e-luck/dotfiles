@@ -577,8 +577,8 @@ nnoremap <Space>nn :NeoComplCacheEditSnippets
 "	endif
 "endfunction
 
-#powerlineのモードインジケーターを日本語に
-#http://mattn.kaoriya.net/software/vim/20120823214404.htm
+"powerlineのモードインジケーターを日本語に
+"http://mattn.kaoriya.net/software/vim/20120823214404.htm
 let g:Powerline_mode_i = '挿入'
 let g:Powerline_mode_R = '置換'
 let g:Powerline_mode_n = '通常'
