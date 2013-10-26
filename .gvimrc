@@ -13,6 +13,9 @@ let g:solarized_termcolors=256
 "colorscheme camo
 "colorscheme h2u_black
 
+"フォント設定
+set guifont=Sauce\ Code\ Powerline:h14
+
 "ウィンドウの幅と高さ
 set columns=180
 set lines=80
