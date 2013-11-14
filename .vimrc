@@ -3,7 +3,7 @@ set nocompatible
 filetype off
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/neobundle.vim.git
+  set runtimepath+=~/.vim/bundle/neobundle.vim.git
 
   call neobundle#rc(expand('~/.bundle'))
 endif
@@ -18,7 +18,7 @@ NeoBundle 'git://github.com/vim-scripts/matchit.zip'
 NeoBundle 'git://github.com/tpope/vim-surround'
 NeoBundle 'git://github.com/sjl/gundo.vim'
 NeoBundle 'git://github.com/othree/html5.vim'
-NeoBundle 'git://github.com/chrismetcalf/vim-yankring'
+NeoBundle 'git://github.com/vim-scripts/YankRing.vim'
 NeoBundle 'git://github.com/vim-scripts/vcscommand.vim'
 NeoBundle 'git://github.com/scrooloose/nerdcommenter'
 NeoBundle 'git://github.com/Lokaltog/vim-easymotion'
