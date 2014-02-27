@@ -11,6 +11,7 @@ endif
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/Shougo/neomru.vim.git'
 NeoBundle 'git://github.com/vim-scripts/FuzzyFinder'
 NeoBundle 'git://github.com/vim-scripts/L9'
 NeoBundle 'git://github.com/vim-scripts/The-NERD-tree'
