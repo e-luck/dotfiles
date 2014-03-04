@@ -29,6 +29,7 @@ NeoBundle 'git://github.com/vim-scripts/sudo.vim.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/t9md/vim-textmanip.git'
 NeoBundle 'git://github.com/terryma/vim-multiple-cursors.git'
+NeoBundle 'git://github.com/gcmt/wildfire.vim.git'
 
 filetype plugin on
 filetype indent on
