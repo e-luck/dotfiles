@@ -91,3 +91,5 @@
 	prompt = false
 [merge]
 	tool = Kaleidoscope
+[hub]
+	host = git.linecorp.com
