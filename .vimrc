@@ -591,3 +591,9 @@ let g:Powerline_mode_cv = '矩形ビジュアル'
 let g:Powerline_mode_s = '選択'
 let g:Powerline_mode_S = '行選択'
 let g:Powerline_mode_cs = '矩形選択'
+
+" This selects the next closest text object.
+let g:wildfire_fuel_map = "<C-ENTER>"
+
+" This selects the previous closest text object.
+let g:wildfire_water_map = "<BS>"
