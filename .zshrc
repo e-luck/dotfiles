@@ -65,3 +65,6 @@ if (( $+commands[hub] ))
 then
   alias git=$hub_path
 fi
+
+#alias git=hubで無効になるgitのサブコマンドの補完を復活させる
+compdef hub=git
