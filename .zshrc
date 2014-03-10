@@ -45,10 +45,10 @@ alias ll="ls -l"
 alias lla="ls -la"
 
 # z
-. `brew --prefix`/etc/profile.d/z.sh
-function precmd () {
-   z --add "$(pwd -P)"
-}
+#. `brew --prefix`/etc/profile.d/z.sh
+#function precmd () {
+#   z --add "$(pwd -P)"
+#}
 
 #if [[ -f ~/.nodebrew/nodebrew ]]; then
 #    export PATH=$HOME/.nodebrew/current/bin:$PATH
