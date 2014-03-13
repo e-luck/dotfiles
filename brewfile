@@ -1,0 +1,44 @@
+tap phinze/homebrew-cask
+tap homebrew/versions
+tap e-luck/homebrew-mycask
+update
+
+install brew-cask
+install curl
+install git
+install hub
+install node
+install openssl
+install rbenv
+install rbenv-gem-rehash
+install readline
+install reattach-to-user-namespace
+install ruby-build
+install tmux
+install wget
+install zsh
+
+# use app store => cask install alfred
+cask install bettertouchtool
+cask install charles
+cask install Chromium
+cask install dropbox
+# use app store => cask install evernote
+cask install firefox
+cask install gas-mask
+cask install gitx-l
+cask install google-chrome
+cask install ios7-screensaver
+cask install iterm2
+# use app store => cask install kaleidoscope
+cask install keyremap4macbook
+cask install ksdiff
+cask install limechat
+cask install path-finder
+cask install pckeyboardhack
+cask install postbox
+cask install scout
+cask install skype
+# use app store => cask install skitch
+# use app store => cask install yorufukurou
+cask install macvim-kaoriya
