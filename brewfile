@@ -39,6 +39,7 @@ cask install pckeyboardhack
 cask install postbox
 cask install scout
 cask install skype
+cask install startninja
 # use app store => cask install skitch
 # use app store => cask install yorufukurou
 cask install macvim-kaoriya
