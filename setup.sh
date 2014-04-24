@@ -12,16 +12,12 @@ which -s brew
 
 if [[ $? != 0 ]]
 then
-	echo 'Installing Homebrew…'
+	echo 'Installing Homebrew...'
 	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
 
 #stop on error
 set -e
-
-# Make sure we’re using the latest Homebrew
-echo 'Update hombrew…'
-brew update
 
 # Install formula
 brew bundle
