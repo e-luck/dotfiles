@@ -55,8 +55,6 @@ NeoBundle 'git://github.com/terryma/vim-multiple-cursors.git'
 NeoBundle 'git://github.com/gcmt/wildfire.vim.git'
 NeoBundle 'git://github.com/gcmt/breeze.vim.git'
 
-filetype plugin on
-filetype indent on
 "neobundle.vim用の指定ここまで
 
 "ツールバーを非表示に
