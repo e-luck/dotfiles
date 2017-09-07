@@ -1,61 +1,66 @@
-"neobundle.vimでプラグイン管理する
-" Note: Skip initialization for vim-tiny or vim-small.
-if !1 | finish | endif
-
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
 " Required:
-call neobundle#begin(expand('~/.bundle/'))
+set runtimepath+=/Users/JP61071/.cache/dein/repos/github.com/Shougo/dein.vim
 
-" Let NeoBundle manage NeoBundle
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+if dein#load_state('/Users/JP61071/.cache/dein')
+  call dein#begin('/Users/JP61071/.cache/dein')
 
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
+  " Let dein manage dein
+  " Required:
+  call dein#add('/Users/JP61071/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-call neobundle#end()
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/neocomplcache.git')
+  call dein#add('Shougo/unite.vim.git')
+  call dein#add('Shougo/neomru.vim.git')
+  call dein#add('vim-scripts/FuzzyFinder')
+  call dein#add('vim-scripts/?L9')
+  call dein#add('vim-scripts/The-NERD-tree')
+  call dein#add('vim-scripts/matchit.zip')
+  call dein#add('tpope/vim-surround')
+  call dein#add('sjl/gundo.vim')
+  call dein#add('othree/html5.vim')
+  call dein#add('vim-scripts/YankRing.vim')
+  call dein#add('vim-scripts/vcscommand.vim')
+  call dein#add('scrooloose/nerdcommenter')
+  call dein#add('Lokaltog/vim-easymotion')
+  call dein#add('vim-scripts/Gist.vim')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('vim-scripts/sudo.vim.git')
+  call dein#add('Lokaltog/vim-powerline.git')
+  call dein#add('t9md/vim-textmanip.git')
+  call dein#add('terryma/vim-multiple-cursors.git')
+  call dein#add('gcmt/wildfire.vim.git')
+  call dein#add('gcmt/breeze.vim.git')
+  call dein#add('altercation/vim-colors-solarized.git')
+
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
 " Required:
 filetype plugin indent on
+syntax enable
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
 
-NeoBundle 'git://github.com/Shougo/neocomplcache.git'
-NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
-NeoBundle 'git://github.com/Shougo/unite.vim.git'
-NeoBundle 'git://github.com/Shougo/neomru.vim.git'
-NeoBundle 'git://github.com/vim-scripts/FuzzyFinder'
-NeoBundle 'git://github.com/vim-scripts/L9'
-NeoBundle 'git://github.com/vim-scripts/The-NERD-tree'
-NeoBundle 'git://github.com/vim-scripts/matchit.zip'
-NeoBundle 'git://github.com/tpope/vim-surround'
-NeoBundle 'git://github.com/sjl/gundo.vim'
-NeoBundle 'git://github.com/othree/html5.vim'
-NeoBundle 'git://github.com/vim-scripts/YankRing.vim'
-NeoBundle 'git://github.com/vim-scripts/vcscommand.vim'
-NeoBundle 'git://github.com/scrooloose/nerdcommenter'
-NeoBundle 'git://github.com/Lokaltog/vim-easymotion'
-NeoBundle 'git://github.com/vim-scripts/Gist.vim'
-NeoBundle 'git://github.com/tpope/vim-fugitive'
-NeoBundle 'git://github.com/vim-scripts/sudo.vim.git'
-NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
-NeoBundle 'git://github.com/t9md/vim-textmanip.git'
-NeoBundle 'git://github.com/terryma/vim-multiple-cursors.git'
-NeoBundle 'git://github.com/gcmt/wildfire.vim.git'
-NeoBundle 'git://github.com/gcmt/breeze.vim.git'
+"End dein Scripts-------------------------
 
-"neobundle.vim用の指定ここまで
 
 "ツールバーを非表示に
 set guioptions-=T
